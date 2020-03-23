@@ -1,0 +1,175 @@
+@charset "UTF-8";
+
+/* 글로벌 변수 설정 */
+@mixin ellipse-one($wid:100%)
+    {
+        width:$wid;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+    }
+.text-ellips {
+	@include ellipse-one(80%);
+}
+
+@mixin translate($x, $y) {
+  -webkit-transform: translate($x, $y);
+     -moz-transform: translate($x, $y);
+      -ms-transform: translate($x, $y);
+       -o-transform: translate($x, $y);
+          transform: translate($x, $y);
+}
+
+@mixin multiline( $line-clanp, $wid,$ht ) {
+    line-clamp: $line-clanp;
+    width:$wid;
+    height:$ht;
+  }
+
+  
+@mixin btn-basic ($padding,$btn-default-color,$btn-default-bgcolor) {
+    padding:$padding;
+    color:$btn-default-color;
+    background:$btn-default-bgcolor;
+  }
+  
+  
+  @mixin clearfix {
+      &::after {
+        content: '';
+        display: block;
+        clear: both;
+      }
+    }
+  
+  @mixin breakpoint($point) {
+    @if $point == notebook {
+      @media (max-width: 1230px) { @content; }
+    }
+    @else if $point == media-tablet {
+      @media (max-width: 1024px) { @content; }
+    }
+    @else if $point == mobiedefault {
+      @media (max-width: 768px)  { @content; }
+    }
+    @else if $point == mobiesmall {
+      @media (max-width: 468px)  { @content; }
+    }      
+    @else if $point == mobieold {
+      @media (max-width: 320px)  { @content; }
+    }         
+  }
+  
+  @mixin border-radius($radius) {
+      -webkit-border-radius: $radius;
+         -moz-border-radius: $radius;
+          -ms-border-radius: $radius;
+              border-radius: $radius;
+    }
+  @mixin border($direction, $width, $style, $color) {
+    border-#{$direction}: $width $style $color;
+  }
+ 
+
+@mixin prefix($property, $value, $prefixes) {
+    @each $prefix in $prefixes {
+      @if not index($known-prefixes, $prefix) {
+        @warn "Unknown prefix #{$prefix}.";
+      }
+      -#{$prefix}-#{$property}: $value;
+    }
+    #{$property}: $value;
+  }
+  
+  @mixin size ($bwd,$bht) {
+    width:$bwd;
+    height:$bht;        
+  }
+  @mixin ft-option ($ft-size,$ft-wt,$color,$mg) {
+    font-size:$ft-size;
+    font-weight: $ft-wt;
+    color:$color;
+    margin:$mg;
+  }
+  @mixin tbl-common {
+    width:100%;
+    border-spacing: 0;
+    border-collapse: collapse;    
+  }
+
+  @mixin basic-th ($ftweight,$tbl-ft-color,$bgcolor) {
+    font-weight:$ftweight;
+    color:$tbl-ft-color;
+    background:$bgcolor;
+  }
+  @mixin basic-td ($ftweight,$tbl-ft-color,$ft-size) {
+    font-weight:$ftweight;
+    color:$tbl-ft-color;
+    font-size:$ft-size;
+  }
+  @mixin body-tblbasic-th ($ftweight,$tbl-ft-color,$bgcolor) {
+    font-weight:$ftweight;
+    color:$tbl-ft-color;
+    background:$bgcolor;
+  }
+  @mixin body-tblbasic-td ($ftweight,$tbl-ft-color,$ft-size) {
+    font-weight:$ftweight;
+    color:$tbl-ft-color;
+    font-size:$ft-size;
+  }
+    @mixin bgimage($name,$position:0 0,$repeat: no-repeat) {
+    $url:"../img/com/#{$name}.png";
+    background: url($url);   
+    position: $position;
+    repeat: $repeat;     
+  }
+  @mixin be-margin ($margin) {
+    margin:$margin;
+  }
+  @mixin list-ul-li ($margin,$color,$ft-size,$padding-left) {
+    margin:$margin;
+    color:$color;
+    font-size:$ft-size;
+    padding-left:$padding-left;
+  }
+  @mixin list-li-before ($po-left,$po-top,$wd,$ht,$brd-radius) {
+    left:$po-left;
+    top:$po-top;
+    width:$wd;
+    height:$ht;
+    border-radius:$brd-radius;
+  }
+  @mixin page-common ($pg-wd,$pg-ht,$page-border,$ft-size,$ft-color,$line-ht) {
+    width:$pg-wd;
+    height:$pg-ht;
+    border: $page-border;
+    font-size:$ft-size;
+    color:$ft-color;
+    line-height: $line-ht;    
+  }
+  @mixin be-active ($bg-color,$ft-color,$page-border-active,$ft-wt) {
+    background: $bg-color;
+    color:$ft-color;
+    border: $page-border-active;    
+    font-weight:$ft-wt;  
+  }
+
+  @mixin boardtop ($bg-color,$page-border,$padding) {
+    background: $bg-color;    
+    border: $page-border;    
+    padding:$padding;
+  }  
+  @mixin boardth ($bg-color,$ht,$ftsz,$color) {
+    background: $bg-color;    
+    height: $ht;    
+    font-size:$ftsz;
+    color:$color;
+  }
+@mixin boardtd ($board-tdline,$tdpd,$ft-size,$color) { 
+  border-bottom: $board-tdline;
+  padding:$tdpd;
+  font-size:$ft-size;
+  color:$color;  
+}
+
+@mixin hover-default ($bg-color,$ft-color) {
+  background: $bg-color;
+  color:$ft-color; 
+}
