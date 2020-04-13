@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+@mixin font-option ($ft-size,$ft-weight,$font-color) {
+    font-size:$ft-size;
+    font-weight:$ft-weight;
+    color:$font-color;
+}
+@mixin el-size($wd,$ht,$padding,$margin) {
+    width:$wd;
+    height:$ht;
+    padding:$padding;
+    margin:$margin;
+    
+}
+
+@mixin board-top ($wd,$padding,$margin,$border-color,$box-bgcolor,$direction) {
+    width:$wd;
+    padding:$padding;
+    margin:$margin;
+    border:1px solid $border-color;
+    background:$box-bgcolor;
+    text-align: #{$direction};
+}
+
+@mixin bgimage($name,$position:0 0,$repeat: no-repeat) {
+    $url:"../img/common/#{$name}.png";
+    background-image: url($url);   
+    background-position: $position;
+    background-repeat: $repeat;     
+  }
+
+
+  @mixin m-option($mo-mg,$mo-pd,$direction) {
+    margin:$mo-mg;
+    padding:$mo-pd;
+    text-align: #{$direction}; 
+  }
+
+//board list type01
+@mixin  list-type__th ($ht,$ft-size,$ft-weight,$ft-color) {
+    height: $ht;
+    font-size:$ft-size;
+    font-weight:$ft-weight;
+    color:$ft-color;     
+}
+@mixin  list-type__td ($pdt,$ft-size,$ft-color) {
+    padding: $pdt;
+    font-size:$ft-size;    
+    color:$ft-color;     
+}

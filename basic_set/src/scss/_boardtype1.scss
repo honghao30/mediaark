@@ -1,0 +1,140 @@
+@charset "UTF-8";
+
+/* 게시판 상단 검색 */
+.board_top {
+            @include board-top (100%,$box-padding,$box-margin,$box-bgcolor,$box-border-color,right)
+            select {position:relative;
+                    @include el-size(12%,$fm-height,0 7px,0);
+                    @include font-option ($fm-font-size,300,$fm-font-color);
+                    @include bgimage(arrow_select,90% center,no-repeat);    
+                    background-color:$fm-bgcolor;                    
+                    border:$fm-border;   
+                    }
+            .tit  {display: inline-block;
+                    @include el-size(0,0,7px 0,0);
+                    @include font-option ($fm-font-size,300,$fm-font-color);
+                    }
+            .search_txt {
+                    @include el-size(350px,$fm-height,0 22px,0);
+                    @include font-option ($fm-font-size,300,$fm-font-color);  
+                    background-color:$fm-bgcolor;                    
+                    border:$fm-border;                       
+                     }
+            .search {
+                    @include el-size(50px,$fm-height,0,0 0 0 -3px);
+                    @include font-option ($fm-font-size,300,$fm-font-color);    
+                    @include bgimage(btn_search,center center,no-repeat);   
+                    background-color:$fm-bgcolor;                    
+                    border:$fm-border;                                                     
+                    border-left:0;
+                    }
+
+                    @include breakpoint(mobiedefault) {   
+                        @include  m-option ($box-margin,$mo-box-padding,left);       
+                        select {
+                                    @include el-size(100%,$mo-fm-height,0 0 0 18px,0 0 13px 0);
+                                    font-size:$mo-fm-ftsize;
+                                }    
+                        .search_txt {                       
+                                    @include el-size(85%,$mo-fm-height,0 18px,0);  
+                                    font-size:$mo-fm-ftsize;
+                                }
+                        .search {display:inline-block;
+                                @include el-size(15%,$mo-fm-height,0,0 0 0 -4px);   
+                                border-left:1px solid $fm-border-color;}
+                    }
+            }
+
+
+
+
+/* 유형별 게시판 */
+.board-list { 
+            width: 100%;
+            margin:$border-mg;
+            border-top:2px solid $bordr-color1; 
+            clear: both; 
+            table-layout: fixed;            
+            thead tr th {  
+                @include list-type__th ($list-th_ht,$list-th_ftsize,700,$list-th_color);
+                vertical-align: middle;
+                text-align: center;
+                background: $list-th_bgcolor;
+                border-bottom: 1px solid $bordr-color2;}    
+           tbody tr:hover td,
+           tbody tr.notice td   {background: $list-tr__hover;}    
+           tbody tr td {
+                        @include list-type__td ($list-td_padding,$list-td_ftsize,$list-td_color);
+                        vertical-align: middle; 
+                        text-align: center; 
+                        background: $list-td_bgcolor;
+                        border-bottom: 1px solid $bordr-colord;  
+
+                        &.subject {text-align: left;padding-left: 20px;}
+                        &.subject a{display:inline-block;vertical-align: middle;
+                                        @include ellipse-one($wid:78%);
+                                    }
+                        &.subject img{display:inline-block;vertical-align:middle;margin-left:10px;}                        
+
+                        }
+                        .col1{width:$col1}
+                        .col2{width:$col2}
+                        .col3{width:$col3}
+                        .col4{width:$col4}
+                        .col5{width:$col5}
+                        .col6{width:$col6}
+                        .col7{width:$col7}
+                        .col8{width:$col8}                        
+                        .col10{width:$col10}      
+                        
+                        
+                    @include breakpoint(media-tablet) {                        
+                        table-layout:auto;        
+                        tbody tr td.subject a{width:80%;}            
+
+                    }
+                    @include breakpoint(mobiedefault) {    
+
+                        thead tr {display:none;}
+                        tbody tr td.data,
+                        tbody tr td.num,
+                        tbody tr td.num-ty2,
+                        tbody tr td.file {display: none;}
+                        tbody tr td.data.mobile {display: inline-block;}
+                      
+                        tbody tr.notice {width:100%;background:$list-tr__hover;}
+                        tbody tr {display:block;width:100%;padding:10px 10px;font-size:0;border-bottom:1px solid #ddd;}
+                        tbody tr td {float:none;display:inline-block;padding:0;border-top: transparent; }
+                      
+                        tbody tr.notice td.num {display:inline-block;margin-right:0;padding-right:0;border:0;width:14%;text-align: left;}
+                                               
+                        tbody tr td.state {margin-right:0;padding-right:0;border:0;width:100%;display: inline-block;text-align: left;font-size:1.4rem;}
+                        tbody tr td.term,
+                        tbody tr td.data,
+                        tbody tr td.hit,
+                        tbody tr td.writer {color:#626262;padding-right:10px;padding-top:10px;border:0; font-size:13px; font-weight:400;}
+                        tbody tr td.writer{display:none;}
+                        tbody tr td.writer::before {content:"";display: inline-block;width:1px;height:10px;background: #dcdcdc;margin-right:10px;}
+                        tbody tr td.writer::after,
+                        tbody tr td.data::after {content:"";display: inline-block;width:1px;height:10px;background: #dcdcdc;margin-left:10px;}
+                        tbody tr td.hit::before {content:"조회";display: inline-block;}
+                        tbody tr td.writer.no-line::before,
+                        tbody tr td.data.no-line::after {content:"";display: inline-block;width:0px;margin-right:10px;}
+                        tbody tr td.status::after,
+                        tbody tr td.status::before {display:none;content:"";background: none;margin-right:0;}
+                        tbody tr td.status {width:58px;text-align: left;line-height:13px;}
+                      
+                        tbody tr td.subject {display:block;width:100%;padding-left:10px;background:none;border-bottom: transparent;}                        
+                        tbody tr td.subject a{width:auto; max-width:88%; margin-left:0;font-size:13px;color:#000;}
+                        tbody tr td.subject img{display:inline-block;width:20px;margin-left:0;vertical-align:middle;}                        
+                        tbody tr:hover { background: #f4f5fa; }
+                        tbody tr td.subject { padding-left: 0px;}                    
+
+                    }      
+                    @include breakpoint(mobiesmall) {                        
+                        tbody tr.notice td.state,
+                        tbody tr.notice td.num {width:19%;font-size:1.5rem;}             
+                    }  
+        }
+
+

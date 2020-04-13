@@ -1,0 +1,432 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+    <title>ITG 퍼블리싱팀</title>
+        <script src="../js/jquery.1.11.0.min.js"></script>
+        <!-- 합쳐지고 최소화된 최신 CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <!-- 부가적인 테마 -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+        <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+        <link rel="stylesheet" href="../css/reset.css">
+        <link rel="stylesheet" href="../css/layout.css">
+		<link rel="stylesheet" href="../basic_set/src/css/itg.css">
+        <!-- 1. core style sheet : 필수 -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/styles/shCore.min.css">
+        <!-- 2. theme style sheet : 택1 -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/styles/shThemeDefault.min.css">
+        <!-- 3. core javascript : 필수 -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/scripts/shCore.min.js"></script>
+
+        <!-- 4. highlight 지원 언어 javascript : 지원할 언어만큼 선택 -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/scripts/shBrushCss.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/scripts/shBrushJScript.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/scripts/shBrushXml.min.js"></script>
+        <!-- xml, xhtml, xslt, html, xhtml -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/scripts/shBrushXml.min.js"></script>
+<!-- xml, xhtml, xslt, html, xhtml -->
+
+        <!-- SyntaxHighlighter 초기화 -->
+        <script type="text/javascript">
+            /* 5. set config : option */
+            // option 지정
+                        /* 5. set config : option */
+                /* [default:false]  blogger.com을 이용한다면 true */
+                SyntaxHighlighter.config.bloggerMode = false;
+                /* [default:Object] http://alexgorbatchev.com/SyntaxHighlighter/manual/configuration/strings.html */
+                SyntaxHighlighter.config.strings = Object;
+                /* [default:false]  소스이 <br />를 무시한다. */
+                SyntaxHighlighter.config.stripBrs = false;
+                /* [default:'pre']  <pre> tag대신 다른 tag를 지정함 */
+                SyntaxHighlighter.config.tagName = 'pre';
+            /* 6. set defaults : option */
+            /* 6. set defaults : option */
+                /* [default:true]   URL 링크 여부 지정 */
+                SyntaxHighlighter.defaults['auto-links'] = true;
+                /* [default:'']     css class를 지정해서 style을 바꾼다 */
+                SyntaxHighlighter.defaults['class-name'] = '';
+                /* [default:false]  code 접기 기능 : bug 있음 */
+                SyntaxHighlighter.defaults['collapse'] = false;
+                /* [default:1]      시작 라인 번호 지정 */
+                SyntaxHighlighter.defaults['first-line'] = 1;
+                /* [default:true]   라인 번호 숨김 여부 지정 */
+                SyntaxHighlighter.defaults['gutter'] = true;
+                /* [default:null]   특정 라인을 강조함. array[3, 7] 또는 하나의 숫자만 사용할수 있음 */
+                SyntaxHighlighter.defaults['highlight'] = null;
+                /* [default:false]  HTML과 같이 사용될경우 HTML을 highlight할지를 결정함. shBrushXml.js가 필요함 */
+                SyntaxHighlighter.defaults['html-script'] = false;
+                /* [default:true]   탭을 smart하게 조정함 */
+                SyntaxHighlighter.defaults['smart-tabs'] = true;
+                /* [default:4]      탭 사이즈 변경 */
+                SyntaxHighlighter.defaults['tab-size'] = 4;
+                /* [default:true]   툴바 표시 지정 */
+                SyntaxHighlighter.defaults['toolbar'] = true;
+                /* [default:false]  라인번호 앞에 0을 채움 */
+                SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+                /* [default:true]   double click으로 code 전체를 선택 */
+                SyntaxHighlighter.defaults['quick-code'] = true;
+
+
+            /* 7. 초기화 : 필수 */
+            SyntaxHighlighter.all();
+        </script>
+        <script type="text/javascript">
+            //<![CDATA[
+                window.onload=function(){
+                    $("#keyword").keyup(function() {
+                        var k = $(this).val();
+                        $(".table-list > tbody > tr").hide();
+                        var temp = $(".table-list > tbody > tr > td:nth-child(5n+2):contains('" + k + "')");
+                        $(temp).parent().show();
+                    })
+                }
+            //]]>
+        </script>
+        <style>
+            .css-namesarch {border:2px solid #ccc;padding:15px;text-align:center;}
+        </style>
+		<script src="../js/asidebar.jquery.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $(".navigation li").click(function(){
+                    $(".navigation li").addClass("active").not(this).removeClass("active");
+                });
+
+                //토글
+                $(".btn_mobile").click(function(){
+                $(this).toggleClass("is_open");
+                $(".mobile-menu").toggleClass("is_open");
+                });
+            });
+        </script>        		
+		  <script type='text/javascript'>
+			   $.get('../header2.html',function(response){ 
+				$('#nav').html(response); 
+			   });
+		  </script>   
+	</head>
+
+<body>
+<div id="wrapper">
+	<div id="nav">
+
+	</div>
+	<div  id="content" class="cont">
+            <p class="text">
+                본 페이지의 마크업은 itg.css 및 reset.css 를 사용할때 정상적으로 출력이 됩니다.
+             </p>
+
+					<h2 id="button-sect">게시판 상단 검색</h2>
+						<div class="text">
+                            <!-- board_top -->
+                            <div class="board_top">
+                                <form>
+                                    <fieldset>
+                                        <legend>게시판 검색폼</legend>
+                                        <div class="inner">
+                                            <label for="schFld" class="blind">검색조건</label>
+                                            <select name="schFld" id="schFld" class="select_box" title="검색어 조건선택">
+                                                <option value="0">전체</option>
+                                                <option value="1">제목</option>
+                                                <option value="2">작성자</option>
+                                                <option value="3">내용</option>
+                                            </select>
+                                            <label for="schStr" class="blind">검색어</label>
+                                            <input type="text" class="search_txt"  title="검색어 입력" placeholder="검색어를 입력해주세요">
+                                            <button type="submit" class="search"><span class="ir-text">검색</span></button>
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </div>
+                            <!-- //board_top -->
+						</div>
+						<pre class="brush:xml;">
+                            <!-- board_top -->
+                            <div class="board_top">
+                                <form>
+                                    <fieldset>
+                                        <legend>게시판 검색폼</legend>
+                                        <div class="inner">
+                                            <label for="schFld" class="blind">검색조건</label>
+                                            <select name="schFld" id="schFld" class="select_box" title="검색어 조건선택">
+                                                <option value="0">전체</option>
+                                                <option value="1">제목</option>
+                                                <option value="2">작성자</option>
+                                                <option value="3">내용</option>
+                                            </select>
+                                            <label for="schStr" class="blind">검색어</label>
+                                            <input type="text" class="search_txt"  title="검색어 입력" placeholder="검색어를 입력해주세요">
+                                            <button type="submit" class="search"><span class="ir-text">검색</span></button>
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </div>
+                            <!-- //board_top -->
+						</pre>
+
+
+                        <h2 id="button-sect">리스트</h2>
+						<div class="text">
+                            <div class="total_list_number">
+                                전체게시글 <strong>1925</strong>개
+                            </div>
+                            <!-- board-list -->
+                            <div class="board-list_wrap">
+                                <table class="board-list">
+                                    <caption>
+                                        <p class="ir-text">번호,상태,제목,접수기간,첨부,담당자,작성일,조회수로 구성된 사업공고 리스트</p>
+                                    </caption>
+                                        <!--[if lt IE 9]>
+                                            <colgroup>
+                                                    <col style="width:7%"  class="num">
+                                                    <col style="width:auto"  class="subject">
+                                                    <col style="width:11%" class="data">
+                                                    <col style="width:11%"  class="hit">
+                                            </colgroup>
+                                        <![endif]-->
+                                        <colgroup class="n_mobile">
+                                            <col class="col1">                                    
+                                            <col class="col9">
+                                            <col class="col4">
+                                            <col class="col8">
+                                            <col class="col4">
+                                            <col class="col10">
+                                            <col class="col10">
+                                        </colgroup>
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">번호</th>                                
+                                        <th scope="col">제목</th>                                
+                                        <th scope="col">첨부</th>
+                                        <th scope="col">담당자</th>
+                                        <th scope="col">작성일</th>
+                                        <th scope="col">조회수</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="notice">
+                                            <td class="num-ty2"><span class="n_mobile">[ 공지 ]</span></td>                                    
+                                            <td class="subject subject-ty2">
+                                                <a href="#">[성남시] 2020년 경기도 에너지자립 선도사업 참여업체 모집 공고 </a>
+                                                <img src="img/icon_new.png" alt="새 글">
+                                            </td>                                
+                                            <td class="file"><img src="img/icon_down.png" alt="첨부파일"></td>
+                                            <td class="writer no-line">홍길동</td>
+                                            <td class="data mobile">2019-01-04</td>
+                                            <td class="hit">100</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="num-ty2">9</td>
+                                            <td class="subject subject-ty2"><a href="#">[성남시] 2020년 경기도 에너지자립 선도사업 참여업체 모집 공고 </a></td>
+                                            <td class="file"><img src="img/icon_down.png" alt="첨부파일"></td>
+                                            <td class="writer no-line">홍길동</td>
+                                            <td class="data mobile">2019-01-04</td>
+                                            <td class="hit">100</td>
+                                        </tr>     
+                                        <tr>
+                                            <td class="num-ty2">8</td>
+                                            <td class="subject subject-ty2"><a href="#">[성남시] 2020년 경기도 에너지자립 선도사업 참여업체 모집 공고 </a></td>
+                                            <td class="file"><img src="img/icon_down.png" alt="첨부파일"></td>
+                                            <td class="writer no-line">홍길동</td>
+                                            <td class="data mobile">2019-01-04</td>
+                                            <td class="hit">100</td>
+                                        </tr> 
+                                        <tr>
+                                            <td class="num-ty2">7</td>
+                                            <td class="subject subject-ty2"><a href="#">[성남시] 2020년 경기도 에너지자립 선도사업 참여업체 모집 공고 </a></td>
+                                            <td class="file"><img src="img/icon_down.png" alt="첨부파일"></td>
+                                            <td class="writer no-line">홍길동</td>
+                                            <td class="data mobile">2019-01-04</td>
+                                            <td class="hit">100</td>
+                                        </tr>    
+                                        <tr>
+                                            <td class="num-ty2">6</td>
+                                            <td class="subject subject-ty2"><a href="#">[성남시] 2020년 경기도 에너지자립 선도사업 참여업체 모집 공고 </a></td>
+                                            <td class="file"><img src="img/icon_down.png" alt="첨부파일"></td>
+                                            <td class="writer no-line">홍길동</td>
+                                            <td class="data mobile">2019-01-04</td>
+                                            <td class="hit">100</td>
+                                        </tr>  
+                                        <tr>
+                                            <td class="num-ty2">5</td>
+                                            <td class="subject subject-ty2"><a href="#">[성남시] 2020년 경기도 에너지자립 선도사업 참여업체 모집 공고 </a></td>
+                                            <td class="file"><img src="img/icon_down.png" alt="첨부파일"></td>
+                                            <td class="writer no-line">홍길동</td>
+                                            <td class="data mobile">2019-01-04</td>
+                                            <td class="hit">100</td>
+                                        </tr>     
+                                        <tr>
+                                            <td class="num-ty2">4</td>
+                                            <td class="subject subject-ty2"><a href="#">[성남시] 2020년 경기도 에너지자립 선도사업 참여업체 모집 공고 </a></td>
+                                            <td class="file"><img src="img/icon_down.png" alt="첨부파일"></td>
+                                            <td class="writer no-line">홍길동</td>
+                                            <td class="data mobile">2019-01-04</td>
+                                            <td class="hit">100</td>
+                                        </tr>  
+                                        <tr>
+                                            <td class="num-ty2">3</td>
+                                            <td class="subject subject-ty2"><a href="#">[성남시] 2020년 경기도 에너지자립 선도사업 참여업체 모집 공고 </a></td>
+                                            <td class="file"><img src="img/icon_down.png" alt="첨부파일"></td>
+                                            <td class="writer no-line">홍길동</td>
+                                            <td class="data mobile">2019-01-04</td>
+                                            <td class="hit">100</td>
+                                        </tr>   
+                                        <tr>
+                                            <td class="num-ty2">2</td>
+                                            <td class="subject subject-ty2"><a href="#">[성남시] 2020년 경기도 에너지자립 선도사업 참여업체 모집 공고 </a></td>
+                                            <td class="file"><img src="img/icon_down.png" alt="첨부파일"></td>
+                                            <td class="writer no-line">홍길동</td>
+                                            <td class="data mobile">2019-01-04</td>
+                                            <td class="hit">100</td>
+                                        </tr>   
+                                        <tr>
+                                            <td class="num-ty2">1</td>
+                                            <td class="subject subject-ty2"><a href="#">[성남시] 2020년 경기도 에너지자립 선도사업 참여업체 모집 공고 </a></td>
+                                            <td class="file"><img src="img/icon_down.png" alt="첨부파일"></td>
+                                            <td class="writer no-line">홍길동</td>
+                                            <td class="data mobile">2019-01-04</td>
+                                            <td class="hit">100</td>
+                                        </tr>                                                                                                                                                                                                                                           
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- //board-list -->
+						</div>
+						<pre class="brush:xml;">
+                            <div class="total_list_number">
+                                전체게시글 <strong>1925</strong>개
+                            </div>
+                            <!-- board-list -->
+                            <div class="board-list_wrap">
+                                <table class="board-list">
+                                    <caption>
+                                        <p class="ir-text">번호,상태,제목,접수기간,첨부,담당자,작성일,조회수로 구성된 사업공고 리스트</p>
+                                    </caption>
+                                        <!--[if lt IE 9]>
+                                            <colgroup>
+                                                    <col style="width:7%"  class="num">
+                                                    <col style="width:auto"  class="subject">
+                                                    <col style="width:11%" class="data">
+                                                    <col style="width:11%"  class="hit">
+                                            </colgroup>
+                                        <![endif]-->
+                                        <colgroup class="n_mobile">
+                                            <col class="col1">                                    
+                                            <col class="col9">
+                                            <col class="col4">
+                                            <col class="col8">
+                                            <col class="col4">
+                                            <col class="col10">
+                                            <col class="col10">
+                                        </colgroup>
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">번호</th>                                
+                                        <th scope="col">제목</th>                                
+                                        <th scope="col">첨부</th>
+                                        <th scope="col">담당자</th>
+                                        <th scope="col">작성일</th>
+                                        <th scope="col">조회수</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="notice">
+                                            <td class="num-ty2"><span class="n_mobile">[ 공지 ]</span></td>                                    
+                                            <td class="subject subject-ty2">
+                                                <a href="#">[성남시] 2020년 경기도 에너지자립 선도사업 참여업체 모집 공고 </a>
+                                                <img src="img/icon_new.png" alt="새 글">
+                                            </td>                                
+                                            <td class="file"><img src="img/icon_down.png" alt="첨부파일"></td>
+                                            <td class="writer no-line">홍길동</td>
+                                            <td class="data mobile">2019-01-04</td>
+                                            <td class="hit">100</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="num-ty2">9</td>
+                                            <td class="subject subject-ty2"><a href="#">[성남시] 2020년 경기도 에너지자립 선도사업 참여업체 모집 공고 </a></td>
+                                            <td class="file"><img src="img/icon_down.png" alt="첨부파일"></td>
+                                            <td class="writer no-line">홍길동</td>
+                                            <td class="data mobile">2019-01-04</td>
+                                            <td class="hit">100</td>
+                                        </tr>     
+                                        <tr>
+                                            <td class="num-ty2">8</td>
+                                            <td class="subject subject-ty2"><a href="#">[성남시] 2020년 경기도 에너지자립 선도사업 참여업체 모집 공고 </a></td>
+                                            <td class="file"><img src="img/icon_down.png" alt="첨부파일"></td>
+                                            <td class="writer no-line">홍길동</td>
+                                            <td class="data mobile">2019-01-04</td>
+                                            <td class="hit">100</td>
+                                        </tr> 
+                                        <tr>
+                                            <td class="num-ty2">7</td>
+                                            <td class="subject subject-ty2"><a href="#">[성남시] 2020년 경기도 에너지자립 선도사업 참여업체 모집 공고 </a></td>
+                                            <td class="file"><img src="img/icon_down.png" alt="첨부파일"></td>
+                                            <td class="writer no-line">홍길동</td>
+                                            <td class="data mobile">2019-01-04</td>
+                                            <td class="hit">100</td>
+                                        </tr>    
+                                        <tr>
+                                            <td class="num-ty2">6</td>
+                                            <td class="subject subject-ty2"><a href="#">[성남시] 2020년 경기도 에너지자립 선도사업 참여업체 모집 공고 </a></td>
+                                            <td class="file"><img src="img/icon_down.png" alt="첨부파일"></td>
+                                            <td class="writer no-line">홍길동</td>
+                                            <td class="data mobile">2019-01-04</td>
+                                            <td class="hit">100</td>
+                                        </tr>  
+                                        <tr>
+                                            <td class="num-ty2">5</td>
+                                            <td class="subject subject-ty2"><a href="#">[성남시] 2020년 경기도 에너지자립 선도사업 참여업체 모집 공고 </a></td>
+                                            <td class="file"><img src="img/icon_down.png" alt="첨부파일"></td>
+                                            <td class="writer no-line">홍길동</td>
+                                            <td class="data mobile">2019-01-04</td>
+                                            <td class="hit">100</td>
+                                        </tr>     
+                                        <tr>
+                                            <td class="num-ty2">4</td>
+                                            <td class="subject subject-ty2"><a href="#">[성남시] 2020년 경기도 에너지자립 선도사업 참여업체 모집 공고 </a></td>
+                                            <td class="file"><img src="img/icon_down.png" alt="첨부파일"></td>
+                                            <td class="writer no-line">홍길동</td>
+                                            <td class="data mobile">2019-01-04</td>
+                                            <td class="hit">100</td>
+                                        </tr>  
+                                        <tr>
+                                            <td class="num-ty2">3</td>
+                                            <td class="subject subject-ty2"><a href="#">[성남시] 2020년 경기도 에너지자립 선도사업 참여업체 모집 공고 </a></td>
+                                            <td class="file"><img src="img/icon_down.png" alt="첨부파일"></td>
+                                            <td class="writer no-line">홍길동</td>
+                                            <td class="data mobile">2019-01-04</td>
+                                            <td class="hit">100</td>
+                                        </tr>   
+                                        <tr>
+                                            <td class="num-ty2">2</td>
+                                            <td class="subject subject-ty2"><a href="#">[성남시] 2020년 경기도 에너지자립 선도사업 참여업체 모집 공고 </a></td>
+                                            <td class="file"><img src="img/icon_down.png" alt="첨부파일"></td>
+                                            <td class="writer no-line">홍길동</td>
+                                            <td class="data mobile">2019-01-04</td>
+                                            <td class="hit">100</td>
+                                        </tr>   
+                                        <tr>
+                                            <td class="num-ty2">1</td>
+                                            <td class="subject subject-ty2"><a href="#">[성남시] 2020년 경기도 에너지자립 선도사업 참여업체 모집 공고 </a></td>
+                                            <td class="file"><img src="img/icon_down.png" alt="첨부파일"></td>
+                                            <td class="writer no-line">홍길동</td>
+                                            <td class="data mobile">2019-01-04</td>
+                                            <td class="hit">100</td>
+                                        </tr>                                                                                                                                                                                                                                           
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- //board-list -->
+						</pre>
+                        
+	</div>
+</div>
+</body>
+</html>
