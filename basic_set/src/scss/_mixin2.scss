@@ -13,6 +13,14 @@
     
 }
 
+@mixin v_line ($mg,$wd,$ht,$bgcolor) {
+    margin: $mg;
+    width: $wd;
+    height: $ht;
+    background: $bgcolor;
+}
+
+
 @mixin board-top ($wd,$padding,$margin,$border-color,$box-bgcolor,$direction) {
     width:$wd;
     padding:$padding;

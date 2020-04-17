@@ -333,6 +333,32 @@ color: #666;
 font-size: #d8deea;
 border: 1px solid #ccc;
 }
+
+.table.table-tbody__scroll {
+width: 100%;
+display: block;
+}
+
+.table.table-tbody__scroll thead {
+background-color: #EFEFEF;
+padding-right: 17px;
+box-sizing: border-box;
+}
+
+.table.table-tbody__scroll thead, .table.table-tbody__scroll tbody {
+display: block;
+width: 100%;
+}
+
+.table.table-tbody__scroll tbody {
+overflow-y: scroll;
+height: 100px;
+}
+
+.table.table-tbody__scroll td, .table.table-tbody__scroll th {
+height: 25px;
+border: 1px solid #ddd;
+}
 /* 폼 */
 .from-common, .input-wrap .input-text, .select-wrap .input-select {
 width: 100%;
@@ -746,6 +772,203 @@ padding-left: 0px;
 .board-list tbody tr.notice td.state, .board-list tbody tr.notice td.num {
 width: 19%;
 font-size: 1.5rem;
+}
+}
+/* 게시판 뷰 공통*/
+.board-wrap__view {
+border-top: 2px solid #4c5e81;
+}
+
+.board-wrap__view .view-info {
+position: relative;
+padding: 25px 45px;
+border-bottom: 1px solid #4c5e81;
+}
+
+.board-wrap__view .view-info .title {
+display: block;
+clear: both;
+vertical-align: middle;
+font-size: 30px;
+font-weight: 500;
+color: #000;
+}
+
+.board-wrap__view .other-info {
+clear: both;
+margin-top: 15px;
+font-size: 16px;
+font-weight: 300;
+color: #666;
+}
+
+.board-wrap__view .other-info span {
+line-height: 1;
+}
+
+.board-wrap__view .other-info span::after {
+content: "";
+display: inline-block;
+vertical-align: middle;
+margin: 0 6px;
+width: 1px;
+height: 15px;
+background: #ddd;
+}
+
+.board-wrap__view .other-info span:first-of-type {
+margin-left: 0;
+}
+
+.board-wrap__view .other-info span:last-child::after {
+content: '';
+width: 0;
+}
+
+.board-wrap__view .view-content {
+padding: 40px;
+font-size: 16px;
+line-height: 170%;
+border-bottom: 1px solid #ddd;
+}
+
+.board-wrap__view .view-img {
+text-align: center;
+}
+
+.board-wrap__view .view-img img {
+margin-bottom: 10px;
+max-width: 100;
+}
+
+@media (max-width: 768px) {
+.board-wrap__view .view-info {
+padding: 10px 0;
+}
+
+.board-wrap__view .view-info .title {
+display: inline-block;
+font-size: 1.8rem;
+}
+
+.board-wrap__view .other-info {
+clear: both;
+margin-top: 15px;
+font-size: 1.4rem;
+}
+
+.board-wrap__view .other-info span {
+display: inline-block;
+margin-bottom: 2px;
+font-size: 11px;
+}
+
+.board-wrap__view .other-info span:last-child::after {
+display: none;
+}
+
+.board-wrap__view .other-info span::after {
+margin: 0 5px;
+}
+
+.board-wrap__view .view-content {
+padding: 20px 0;
+font-size: 11px;
+color: #676767;
+font-weight: 400;
+}
+}
+/*이전글 다음글*/
+.prev-next-wrap {
+margin: 40px 0;
+font-size: 16px;
+font-weight: 300;
+color: #000;
+border-top: 1px solid #ddd;
+border-bottom: 1px solid #ddd;
+}
+
+.prev-next-wrap li {
+display: table;
+width: 100%;
+}
+
+.prev-next-wrap li strong {
+display: table-cell;
+width: 15%;
+padding: 25px 0;
+text-align: center;
+vertical-align: middle;
+}
+
+.prev-next-wrap li a {
+display: table-cell;
+width: 84%;
+padding: 25px 0;
+font-size: 16px;
+font-weight: 300;
+color: #000;
+text-align: left;
+}
+
+.prev-next-wrap li a:hover {
+text-decoration: underline;
+color: #ddd;
+}
+
+.prev-next-wrap li li:first-child {
+border-bottom: 1px solid #4c5e81;
+}
+
+.prev-next-wrap li li.prev strong {
+background-image: url("../img/common/icon_prev.png");
+background-position: 30px center;
+background-repeat: no-repeat;
+font-weight: 400;
+}
+
+.prev-next-wrap li li.next strong {
+background-image: url("../img/common/icon_next.png");
+background-position: 30px center;
+background-repeat: no-repeat;
+font-weight: 400;
+}
+
+@media (max-width: 768px) {
+.prev-next-wrap {
+margin: 20px 0;
+font-size: 1.4rem;
+}
+
+.prev-next-wrap li strong {
+display: inline-block;
+width: 82px;
+padding: 5px 0;
+vertical-align: middle;
+}
+
+.prev-next-wrap li.prev strong {
+background-image: url("../img/common/icon_prev.png");
+background-position: 10px center;
+background-repeat: no-repeat;
+background-size: 10px auto;
+font-size: 11px;
+}
+
+.prev-next-wrap li.next strong {
+background-image: url("../img/common/icon_next.png");
+background-position: 10px center;
+background-repeat: no-repeat;
+background-size: 10px auto;
+font-size: 11px;
+}
+
+.prev-next-wrap li a {
+display: inline-block;
+width: 69%;
+padding: 10px 0;
+font-size: 11px;
+vertical-align: middle;
 }
 }
 /* 페이징 */

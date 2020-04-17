@@ -85,29 +85,23 @@
                         .col6{width:$col6}
                         .col7{width:$col7}
                         .col8{width:$col8}                        
-                        .col10{width:$col10}      
-                        
-                        
+                        .col10{width:$col10}  
                     @include breakpoint(media-tablet) {                        
                         table-layout:auto;        
                         tbody tr td.subject a{width:80%;}            
 
                     }
                     @include breakpoint(mobiedefault) {    
-
                         thead tr {display:none;}
                         tbody tr td.data,
                         tbody tr td.num,
                         tbody tr td.num-ty2,
                         tbody tr td.file {display: none;}
-                        tbody tr td.data.mobile {display: inline-block;}
-                      
+                        tbody tr td.data.mobile {display: inline-block;}                      
                         tbody tr.notice {width:100%;background:$list-tr__hover;}
                         tbody tr {display:block;width:100%;padding:10px 10px;font-size:0;border-bottom:1px solid #ddd;}
-                        tbody tr td {float:none;display:inline-block;padding:0;border-top: transparent; }
-                      
-                        tbody tr.notice td.num {display:inline-block;margin-right:0;padding-right:0;border:0;width:14%;text-align: left;}
-                                               
+                        tbody tr td {float:none;display:inline-block;padding:0;border-top: transparent; }                      
+                        tbody tr.notice td.num {display:inline-block;margin-right:0;padding-right:0;border:0;width:14%;text-align: left;}                                               
                         tbody tr td.state {margin-right:0;padding-right:0;border:0;width:100%;display: inline-block;text-align: left;font-size:1.4rem;}
                         tbody tr td.term,
                         tbody tr td.data,
@@ -122,8 +116,7 @@
                         tbody tr td.data.no-line::after {content:"";display: inline-block;width:0px;margin-right:10px;}
                         tbody tr td.status::after,
                         tbody tr td.status::before {display:none;content:"";background: none;margin-right:0;}
-                        tbody tr td.status {width:58px;text-align: left;line-height:13px;}
-                      
+                        tbody tr td.status {width:58px;text-align: left;line-height:13px;}                      
                         tbody tr td.subject {display:block;width:100%;padding-left:10px;background:none;border-bottom: transparent;}                        
                         tbody tr td.subject a{width:auto; max-width:88%; margin-left:0;font-size:13px;color:#000;}
                         tbody tr td.subject img{display:inline-block;width:20px;margin-left:0;vertical-align:middle;}                        

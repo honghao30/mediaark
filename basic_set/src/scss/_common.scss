@@ -64,6 +64,15 @@
                         }
                 }
 
+.table.table-tbody__scroll {width: 100%;display: block;}
+.table.table-tbody__scroll thead {background-color: #EFEFEF;padding-right:17px; box-sizing:border-box;}
+.table.table-tbody__scroll thead, 
+.table.table-tbody__scroll tbody {display: block;width: 100%;}
+.table.table-tbody__scroll tbody {overflow-y: scroll;height: 100px;}
+.table.table-tbody__scroll td, 
+.table.table-tbody__scroll th {height: 25px;border:1px solid #ddd;}
+
+
 /* 폼 */
 .from-common {width:100%;height:100%;text-indent: 10px;}
 .form-wrap {display:inline-block;}

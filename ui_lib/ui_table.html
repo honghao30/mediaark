@@ -1,0 +1,344 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <title>ITG 퍼블리싱팀</title>
+    <script src="../js/jquery.1.11.0.min.js"></script>
+    <!-- 합쳐지고 최소화된 최신 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <!-- 부가적인 테마 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../basic_set/src/css/itg.css">
+    <!-- 1. core style sheet : 필수 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/styles/shCore.min.css">
+    <!-- 2. theme style sheet : 택1 -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/styles/shThemeDefault.min.css">
+    <!-- 3. core javascript : 필수 -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/scripts/shCore.min.js"></script>
+    <!-- 4. highlight 지원 언어 javascript : 지원할 언어만큼 선택 -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/scripts/shBrushCss.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/scripts/shBrushJScript.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/scripts/shBrushXml.min.js"></script>
+    <!-- xml, xhtml, xslt, html, xhtml -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/scripts/shBrushXml.min.js"></script>
+    <!-- xml, xhtml, xslt, html, xhtml -->
+    <!-- SyntaxHighlighter 초기화 -->
+    <script type="text/javascript">
+        /* 5. set config : option */
+        // option 지정
+        /* 5. set config : option */
+        /* [default:false]  blogger.com을 이용한다면 true */
+        SyntaxHighlighter.config.bloggerMode = false;
+        /* [default:Object] http://alexgorbatchev.com/SyntaxHighlighter/manual/configuration/strings.html */
+        SyntaxHighlighter.config.strings = Object;
+        /* [default:false]  소스의 <br />를 무시한다. */
+        SyntaxHighlighter.config.stripBrs = false;
+        /* [default:'pre']  <pre> tag대신 다른 tag를 지정함 */
+        SyntaxHighlighter.config.tagName = 'pre';
+        /* 6. set defaults : option */
+        /* 6. set defaults : option */
+        /* [default:true]   URL 링크 여부 지정 */
+        SyntaxHighlighter.defaults['auto-links'] = true;
+        /* [default:'']     css class를 지정해서 style을 바꾼다 */
+        SyntaxHighlighter.defaults['class-name'] = '';
+        /* [default:false]  code 접기 기능 : bug 있음 */
+        SyntaxHighlighter.defaults['collapse'] = false;
+        /* [default:1]      시작 라인 번호 지정 */
+        SyntaxHighlighter.defaults['first-line'] = 1;
+        /* [default:true]   라인 번호 숨김 여부 지정 */
+        SyntaxHighlighter.defaults['gutter'] = true;
+        /* [default:null]   특정 라인을 강조함. array[3, 7] 또는 하나의 숫자만 사용할수 있음 */
+        SyntaxHighlighter.defaults['highlight'] = null;
+        /* [default:false]  HTML과 같이 사용될경우 HTML을 highlight할지를 결정함. shBrushXml.js가 필요함 */
+        SyntaxHighlighter.defaults['html-script'] = false;
+        /* [default:true]   탭을 smart하게 조정함 */
+        SyntaxHighlighter.defaults['smart-tabs'] = true;
+        /* [default:4]      탭 사이즈 변경 */
+        SyntaxHighlighter.defaults['tab-size'] = 4;
+        /* [default:true]   툴바 표시 지정 */
+        SyntaxHighlighter.defaults['toolbar'] = true;
+        /* [default:false]  라인번호 앞에 0을 채움 */
+        SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+        /* [default:true]   double click으로 code 전체를 선택 */
+        SyntaxHighlighter.defaults['quick-code'] = true;
+        /* 7. 초기화 : 필수 */
+        SyntaxHighlighter.all();
+    </script>
+    <script type="text/javascript">
+        //<![CDATA[
+        window.onload = function () {
+            $("#keyword").keyup(function () {
+                var k = $(this).val();
+                $(".table-list > tbody > tr").hide();
+                var temp = $(".table-list > tbody > tr > td:nth-child(5n+2):contains('" + k + "')");
+                $(temp).parent().show();
+            })
+        }
+        //]]>
+    </script>
+    <style>
+        .css-namesarch {
+            border: 2px solid #ccc;
+            padding: 15px;
+            text-align: center;
+        }
+    </style>
+    <script src="../js/asidebar.jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".navigation li").click(function () {
+                $(".navigation li").addClass("active").not(this).removeClass("active");
+            });
+            //토글
+            $(".btn_mobile").click(function () {
+                $(this).toggleClass("is_open");
+                $(".mobile-menu").toggleClass("is_open");
+            });
+        });
+    </script>
+    <script type='text/javascript'>
+        $.get('../header2.html', function (response) {
+            $('#nav').html(response);
+        });
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="nav">
+        </div>
+        <div id="content" class="cont">
+            <p class="text">
+                본 페이지의 마크업은 itg.css 및 reset.css 를 사용할때 정상적으로 출력이 됩니다.
+            </p>
+            <h2 id="table-sect">table</h2>
+            <div class="text">
+                <table class="table table-list">
+                    <caption><span class="ir-text">번호,제목,항목1,항목2,비고로 구성된 리스트 테이블</span></caption>
+                    <colgroup>
+                        <col width="10%">
+                        <col width="20%">
+                        <col width="20%">
+                        <col width="20%">
+                        <col width="30%">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th scope="col">번호</th>
+                            <th scope="col">제목</th>
+                            <th scope="col">항목1</th>
+                            <th scope="col">항목2</th>
+                            <th scope="col">비고</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>10</td>
+                            <td>관련제목입니다.</td>
+                            <td>항목1</td>
+                            <td>항목1</td>
+                            <td>비고내용입니다.</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>관련제목입니다.</td>
+                            <td>항목1</td>
+                            <td>항목1</td>
+                            <td>비고내용입니다.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <pre class="brush:xml;">
+                            <table class="table table-list">
+                                <caption><span class="ir-text">번호,제목,항목1,항목2,비고로 구성된 리스트 테이블</span></caption>
+                                <colgroup>
+                                    <col width="10%">
+                                    <col width="20%">
+                                    <col width="20%">
+                                    <col width="20%">
+                                    <col width="30%">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">번호</th>
+                                        <th scope="col">제목</th>
+                                        <th scope="col">항목1</th>
+                                        <th scope="col">항목2</th>
+                                        <th scope="col">비고</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>10</td>
+                                        <td>관련제목입니다.</td>
+                                        <td>항목1</td>
+                                        <td>항목1</td>
+                                        <td>비고내용입니다.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>9</td>
+                                        <td>관련제목입니다.</td>
+                                        <td>항목1</td>
+                                        <td>항목1</td>
+                                        <td>비고내용입니다.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+						</pre>
+            <div class="text">
+                <table class="table table-body-only">
+                    <caption><span class="ir-text">항목과 비고로 구성된 표</span></caption>
+                    <colgroup>
+                        <col width="15%">
+                        <col width="">
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <th scope="row">항목1</th>
+                            <td>관련제목입니다.</td>
+                        </tr>
+                        <tr>
+                            <th>항목2</th>
+                            <td>관련제목입니다.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>반응형의 구현</h2>
+            <p class="text">
+                td,th 등 모든 요소를 block 화 시켜 라인으로 풀어주는 등 여러 기법이 존재하지만 보편적으로 사용되는 기법을 차용하며 이하 방법론은 참조한다.<br><br>
+                예제1)<br>
+                <a href="https://codepen.io/jaehee/pen/aWmdNV" target="_blank">코드핀에서 보기</a><br>
+                예제2)<br>
+                <a href="https://mcatcher.github.io/project/rwtable/rwtable.html" target="_blank">예제보기</a>
+            </p>
+                        
+            <h2>헤더 고정형</h2>
+            <script>
+                $(window).resize(function(){
+                    Tresize();
+                });
+                Tresize();
+                function Tresize(){
+                var TableW = $(".table-tbody__scroll").width();
+                var TLength = $(".table-tbody__scroll thead th").length;
+                $(".table-tbody__scroll th, .table-tbody__scroll td").css("width",TableW/TLength);
+                }
+            </script>
+            <div class="text">
+                <table class="table table-list table-tbody__scroll">
+                    <colgroup>
+                      <col span="5" width="*" />
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>Column 1</th>
+                            <th>Column 2</th>
+                            <th>Column 3</th>
+                            <th>Column 4</th>
+                            <th>Column 5</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>AAAAAAAAAAAAAAAAAAAAAAAAAA</td>
+                            <td>Row 1</td>
+                            <td>Row 1</td>
+                            <td>Row 1</td>
+                            <td>Row 1</td>
+                        </tr>
+                        <tr>
+                            <td>Row 2</td>
+                            <td>Row 2</td>
+                            <td>Row 2</td>
+                            <td>Row 2</td>
+                            <td>Row 2</td>
+                        </tr>
+                        <tr>
+                            <td>Row 3</td>
+                            <td>Row 3</td>
+                            <td>Row 3</td>
+                            <td>Row 3</td>
+                            <td>Row 3</td>
+                        </tr>
+                        <tr>
+                            <td>Row 4</td>
+                            <td>Row 4</td>
+                            <td>Row 4</td>
+                            <td>Row 4</td>
+                            <td>Row 4</td>
+                        </tr>
+                        <tr>
+                            <td>Row 5</td>
+                            <td>Row 5</td>
+                            <td>Row 5</td>
+                            <td>Row 5</td>
+                            <td>Row 5</td>
+                        </tr>
+                        <tr>
+                            <td>Row 4</td>
+                            <td>Row 4</td>
+                            <td>Row 4</td>
+                            <td>Row 4</td>
+                            <td>Row 4</td>
+                        </tr>
+                        <tr>
+                            <td>Row 5</td>
+                            <td>Row 5</td>
+                            <td>Row 5</td>
+                            <td>Row 5</td>
+                            <td>Row 5</td>
+                        </tr>
+                        <tr>
+                            <td>Row 4</td>
+                            <td>Row 4</td>
+                            <td>Row 4</td>
+                            <td>Row 4</td>
+                            <td>Row 4</td>
+                        </tr>
+                        <tr>
+                            <td>Row 5</td>
+                            <td>Row 5</td>
+                            <td>Row 5</td>
+                            <td>Row 5</td>
+                            <td>Row 5</td>
+                        </tr>
+                        <tr>
+                            <td>Row 4</td>
+                            <td>Row 4</td>
+                            <td>Row 4</td>
+                            <td>Row 4</td>
+                            <td>Row 4</td>
+                        </tr>
+                        <tr>
+                            <td>Row 5</td>
+                            <td>Row 5</td>
+                            <td>Row 5</td>
+                            <td>Row 5</td>
+                            <td>Row 5</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+
+        </div>
+    </div>
+</body>
+</html>
