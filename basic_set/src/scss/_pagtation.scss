@@ -1,101 +1,114 @@
 @charset "UTF-8";
 
 /* 페이징1 */
-.paging {
-        @include be-margin(40px);      
-        text-align:center;
-        >.page {
-          display:inline-block;text-align:center;vertical-align:middle;
-          @include page-common (36px,36px,$page-border,15px,#4d4d4d,34px)
-        }      
-        >.page:hover,
-        >.page:focus,
-        >.page.on{
-          @include be-active (#18a2dc,$page-border-active,300,#fff)
-         }        
-         >.page:first-child{margin-left:0;}
-         >.btn{position:relative;}
-         >.btn:after{
-            display:block;
-            position:absolute;
-            top:50%;
-            left:50%;           
-            @include size (14px,16px);
-            @include bgimage (sp_ico);
-            @include translate(50%, 50%);
-            content:"";}
-         >.prev_all:after{width: 21px;background-position: 2px -70px;}
-         >.prev:after{background-position: -20px -70px;}
-         >.next_all:after{width: 20px;background-position: -46px -70px;}
-         >.next:after{background-position: -32px -70px;}  
-         @include breakpoint(notebook) {
-          >.page{
-            @include page-common (42px,42px,$page-border,2.2rem,#4d4d4d,40px)
-            }
-          >.btn:after{
-            @include size (12px,18px);
-            }
-          >.prev_all:after{width:$pgwd;}
-          >.next_all:after{width:$pgwd;}          
-         }
-         @include breakpoint(mobiedefault) {           
-            @include be-margin(20px);            
-          >.page {
-            @include page-common (26px,26px,$page-border,1.6rem,#4d4d4d,24px)
-            margin-left:4px;
-          }
-          >.btn:after{
-            @include size(8px,9px);
-            @include bgimage (sp_ico_res,$position:0 0,$repeat: no-repeat);
-            background-size: 150px auto;
-            }
-          >.prev_all:after{width:10px;background-position:-52px -42px;}
-          >.prev:after{background-position:-62px -42px;}
-          >.next_all:after{width:10px;background-position:-58px -52px;}
-          >.next:after{background-position:-50px -52px;}    
-          }     
-      }
+.paging { margin: 40px auto; text-align: center;font-size:0;
+        & > .page {display: inline-block;
+                  text-align: center;
+                  @include font-option (14px,300,#000);
+                  @include el-size(43px,43px,0,0 1px)
+                  line-height: 43px; 
+                  vertical-align: middle;
+                  border: $paging-border-default;
+                  &:hover,
+                  &:focus,
+                  &.on { background: $paging-on__color;border:1px solid $paging-on__color;color:#fff;}
+                  &:first-child { margin-left: 0; }
+                }                
 
+            & > .page-btn {display: inline-block;position: relative; 
+                  @include el-size(43px,43px,0,0)       
+                  text-align: center;
+                  vertical-align: middle;
+                  background: $paging-btn_bg; 
+                  border: 1px solid $paging-btn_border;
+                  line-height: 43px;
+                  pointer-events: none;
+                }
+
+            & > .prev_all {
+                          @include bgimage(first-arrow,$position:center center,$repeat: no-repeat);
+                          pointer-events: none;
+                          }
+            & > .prev {
+                      @include bgimage(left-arrow,$position:center center,$repeat: no-repeat);                 
+                      margin-right:4px;
+                      pointer-events: none;
+                     }
+            & > .next {
+                      @include bgimage(right-arrow,$position:center center,$repeat: no-repeat);                                  
+                      margin-left:4px;
+                      pointer-events: none;
+                    }
+            & > .next_all {
+                          @include bgimage(last-arrow,$position:center center,$repeat: no-repeat);                                      
+                          pointer-events: none;
+                        }
+
+
+     }
+
+
+
+
+@media (max-width: 1230px) {
+
+}
+@media (max-width: 768px) {
+  .paging > .page {width: 27px;height: 27px;line-height: 25px; }
+  .paging > .page-btn {width: 27px;height: 27px;line-height: 27px; background-size:auto 9px; }
+  .paging > .page.n_mobile {display:none;}
+}
 
 /* 페이징2 */
-.paginate{
-  @include be-margin(25px);  
-  text-align:center;
-  a   {
-      display:inline-block;
-      @include page-common (36px,36px,$page-border,16px,#666,36px);  
-      margin:0 2px;vertical-align: middle;
-      span {
-            @include size (36px,36px);
-            vertical-align:middle;}  
-      } 
-    .sp_start{background-position:-22px -306px;}
-    .sp_finish{background-position:-136px -306px;}
-    .sp_prev{background-position:-60px -306px;}
-    .sp_next{background-position:-98px -306px;}
-    .paginate_input_wrap{display:inline-block;
-            @include ft-option (18px,700,#575757,0 6px 0 14px);  
-            vertical-align: middle;}
-    .paginate_input{display:inline-block;
-          @include ft-option (18px,700,#575757,0 6px 0 0);  
-          border: $border-default;text-align:center;}          
-    .total_num{margin-right:14px;}
-    .btn_page_go {
-            @include ft-option (15px,500,#fff,0);
-            @include size (57px,36px);
-            background:#3980b2;line-height:36px;
-          }   
-    @include breakpoint(mobiedefault) {             
-        @include be-margin(13px);  
-       a{width:28px;height:28px;border:1px solid #ccc;vertical-align: middle;
-       span {width:28px;height:28px;vertical-align:middle;}
-       }
-        .sp_start{background-position:-120px -256px;}
-        .sp_prev{background-position:-87px -275px;}
-        .sp_next{background-position:-87px -305px;}
-        .sp_finish{background-position:-150px -256px;}
-        .paginate_input_wrap{margin:0;font-size:1.7rem;vertical-align: middle;}
-        .paginate_input{height:28px;}
-        .btn_page_go{height:28px;font-size:1.7rem;line-height:28px;}
-      }                 
-   } 
+.paginate{margin-top:25px;font-size:0;text-align:center;vertical-align: middle;
+        a {display:inline-block;
+          @include el-size(36px,36px,0,0 2px)            
+          border:$paging-border-default;
+          vertical-align: top;
+          span{@include el-size(36px,36px,0,0 2px)
+            vertical-align:middle}       
+          }
+          .sp_start{
+            @include bgimage(first-arrow,$position:center center,$repeat: no-repeat);
+          }
+          .sp_finish{
+            @include bgimage(last-arrow,$position:center center,$repeat: no-repeat);   
+          }
+          .sp_prev{
+            @include bgimage(left-arrow,$position:center center,$repeat: no-repeat);    
+          }
+          .sp_next{
+            @include bgimage(right-arrow,$position:center center,$repeat: no-repeat);      
+          }
+          .paginate_input_wrap{display:inline-block;
+            @include font-option (18px,700,#575757);             
+            margin:0 6px 0 8px;
+          }
+          .paginate_input{display:inline-block;
+            @include el-size(30px,34px,0,0 6px 0 0);
+            @include font-option (18px,700,#000);   
+            border-bottom:2px solid #000000;
+            text-align:center;
+            vertical-align:top}
+          .btn_page_go{
+            @include el-size(57px,36px,0,0);
+            @include font-option (14px,500,#fff);            
+            line-height:36px;
+            background:$paging-on__color;
+            vertical-align: top;} 
+          .total_num{height:36px;
+                    line-height:36px;margin-right:14px;}        
+        }
+
+
+
+
+@media screen and (max-width:767px) {
+    .paginate{margin-top:13px}
+    .paginate a{width:28px;height:28px !important;margin:0 1px;}
+    .paginate a span{width:28px;height:28px;vertical-align:middle}
+    .paginate .paginate_input_wrap{margin:0;font-size:1.7rem}
+    .paginate .paginate_input{height:28px;margin:0}
+    .paginate .total_num{margin:0}
+    .paginate .btn_page_go{height:28px;font-size:1.7rem;line-height:28px}
+}

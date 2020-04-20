@@ -46,6 +46,13 @@ button,input[type='button'],input[type='submit'],input[type='reset'],input[type=
 .ir-text,legend,.blind{overflow:hidden;position:absolute;border:0;width:1px;height:1px;clip:rect(1px,1px,1px,1px)}
 *,*:before,*:after{-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;}
 
+input:focus::-webkit-input-placeholder { color: transparent; } 
+input:focus::-moz-placeholder { color: transparent; } 
+input:focus:-ms-input-placeholder { color: transparent; } 
+input:focus::-ms-input-placeholder { color: transparent; }
+
+
+
 @media screen and (max-width:1239px){
   html{font-size:10px;font-size:0.625rem;}
   body,button,input,select,table,textarea{font-size:1.6rem;letter-spacing:-0.05rem;}

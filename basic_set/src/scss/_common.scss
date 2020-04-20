@@ -74,19 +74,37 @@
 
 
 /* 폼 */
-.from-common {width:100%;height:100%;text-indent: 10px;}
 .form-wrap {display:inline-block;}
-.input-wrap {display:inline-block;width:45%;height:$fm-height;line-height:$fm-height;border: $border-default;
+.input-wrap {display:inline-block;
+  @include form-val (100%,$form-height,$form-height,0px);
+  background: $form-bg; 
+  border: $form-border;
+  margin:2px;
+  }
   .input-text {
-    @extend .from-common;
+    @include form-val (100%,100%,$form-height,10px);
+    font-size:$form-ftsize;
+    color:$form-color;
   }
-}
-.select-wrap {display:inline-block;width:45%;height:$fm-height;line-height:$fm-height;border: $border-default;
+  .select-wrap {
+    display:inline-block;
+    @include form-val (100%,$form-height,$form-height,0px);
+    background-color: $form-bg; 
+    border: $form-border;   
+    margin:2px; 
+  }
   .input-select {
-    @extend .from-common;
-    @include bgimage(arrow);
+    @include form-val (100%,100%,$form-height,10px);
+    font-size:$form-ftsize;    
+    color:$form-color;    
+    @include bgimage(arrow_select,$position:98% center,$repeat: no-repeat)
   }
-}
+  .form-group {margin-bottom: 0;
+    &.is-two_colum > div {width:calc( 100% / 2 - 10px)}
+    &.is-three_colum > div {width:calc( 100% / 3 - 10px)}
+  }
+  .input-post {width:calc( 100% - 120px)}
+
 /* list */
 .list-ul {
   @include be-margin (30px);

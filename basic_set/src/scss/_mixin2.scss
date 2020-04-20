@@ -56,3 +56,10 @@
     font-size:$ft-size;    
     color:$ft-color;     
 }
+
+@mixin form-val ($wd,$ht,$lh,$ti) {
+    width:$wd;
+    height:$ht;
+    line-height: $lh;    
+    text-indent: $ti;
+}
