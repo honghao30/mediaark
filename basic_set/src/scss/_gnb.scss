@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+.gnb-type01 {width:100%;font-size:0;padding:20px 0;border-bottom:1px solid #ddd;}
+.gnb-type01 .one-depth > li {display:inline-block;font-size:18px;color:#000;font-weight:500;width:20%;}
+.gnb-type01 .one-depth > li > a {padding:15px 0;}
+.two-depth {display:none;margin:10px 0;}
+.two-depth > li {font-size:16px;}
+.two-depth > li > ul {margin:10px 0;}
+.two-depth > li > ul li {font-size:15px;font-weight:300;}
+
+.btn-gnb_all {position:absolute;right:10px;top:10px;font-size:16px;}
+.header__gnb-all {display:none;}
+
+
+
+
+//side menu
