@@ -1,0 +1,114 @@
+@charset "UTF-8";
+
+/* 페이징1 */
+.paging { margin: 40px auto; text-align: center;font-size:0;
+        & > .page {display: inline-block;
+                  text-align: center;
+                  @include font-option (14px,300,#000);
+                  @include el-size(43px,43px,0,0 1px)
+                  line-height: 43px; 
+                  vertical-align: middle;
+                  border: $paging-border-default;
+                  &:hover,
+                  &:focus,
+                  &.on { background: $paging-on__color;border:1px solid $paging-on__color;color:#fff;}
+                  &:first-child { margin-left: 0; }
+                }                
+
+            & > .page-btn {display: inline-block;position: relative; 
+                  @include el-size(43px,43px,0,0)       
+                  text-align: center;
+                  vertical-align: middle;
+                  background: $paging-btn_bg; 
+                  border: 1px solid $paging-btn_border;
+                  line-height: 43px;
+                  pointer-events: none;
+                }
+
+            & > .prev_all {
+                          @include bgimage(first-arrow,$position:center center,$repeat: no-repeat);
+                          pointer-events: none;
+                          }
+            & > .prev {
+                      @include bgimage(left-arrow,$position:center center,$repeat: no-repeat);                 
+                      margin-right:4px;
+                      pointer-events: none;
+                     }
+            & > .next {
+                      @include bgimage(right-arrow,$position:center center,$repeat: no-repeat);                                  
+                      margin-left:4px;
+                      pointer-events: none;
+                    }
+            & > .next_all {
+                          @include bgimage(last-arrow,$position:center center,$repeat: no-repeat);                                      
+                          pointer-events: none;
+                        }
+
+
+     }
+
+
+
+
+@media (max-width: 1230px) {
+
+}
+@media (max-width: 768px) {
+  .paging > .page {width: 27px;height: 27px;line-height: 25px; }
+  .paging > .page-btn {width: 27px;height: 27px;line-height: 27px; background-size:auto 9px; }
+  .paging > .page.n_mobile {display:none;}
+}
+
+/* 페이징2 */
+.paginate{margin-top:25px;font-size:0;text-align:center;vertical-align: middle;
+        a {display:inline-block;
+          @include el-size(36px,36px,0,0 2px)            
+          border:$paging-border-default;
+          vertical-align: top;
+          span{@include el-size(36px,36px,0,0 2px)
+            vertical-align:middle}       
+          }
+          .sp_start{
+            @include bgimage(first-arrow,$position:center center,$repeat: no-repeat);
+          }
+          .sp_finish{
+            @include bgimage(last-arrow,$position:center center,$repeat: no-repeat);   
+          }
+          .sp_prev{
+            @include bgimage(left-arrow,$position:center center,$repeat: no-repeat);    
+          }
+          .sp_next{
+            @include bgimage(right-arrow,$position:center center,$repeat: no-repeat);      
+          }
+          .paginate_input_wrap{display:inline-block;
+            @include font-option (18px,700,#575757);             
+            margin:0 6px 0 8px;
+          }
+          .paginate_input{display:inline-block;
+            @include el-size(30px,34px,0,0 6px 0 0);
+            @include font-option (18px,700,#000);   
+            border-bottom:2px solid #000000;
+            text-align:center;
+            vertical-align:top}
+          .btn_page_go{
+            @include el-size(57px,36px,0,0);
+            @include font-option (14px,500,#fff);            
+            line-height:36px;
+            background:$paging-on__color;
+            vertical-align: top;} 
+          .total_num{height:36px;
+                    line-height:36px;margin-right:14px;}        
+        }
+
+
+
+
+@media screen and (max-width:767px) {
+    .paginate{margin-top:13px}
+    .paginate a{width:28px;height:28px !important;margin:0 1px;}
+    .paginate a span{width:28px;height:28px;vertical-align:middle}
+    .paginate .paginate_input_wrap{margin:0;font-size:1.7rem}
+    .paginate .paginate_input{height:28px;margin:0}
+    .paginate .total_num{margin:0}
+    .paginate .btn_page_go{height:28px;font-size:1.7rem;line-height:28px}
+}

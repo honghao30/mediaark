@@ -1,0 +1,124 @@
+@charset "UTF-8";
+
+/* 공통요소 */
+.multiline-ellips {
+    @include multiline(3, 80%, 50px);
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    }
+.box { 
+    @include border-radius(0px);
+    border:$border-default;
+    padding:$bx-padding;    
+    }
+
+
+
+
+/* 제목 스타일 */
+.pagetit-h1 {font-size:$font-size-h1;color:$color-primary-light;font-weight: 700;}
+.pagetit-h2 {font-size:$font-size-h2;color:$color-primary-light;font-weight: 700;}
+.pagetit-h3 {font-size:$font-size-h3;color:$color-primary-light;font-weight: 700;}
+.pagetit-h4 {font-size:$font-size-h4;color:$color-primary-light;font-weight: 700;}
+.pagetit-h5 {font-size:$font-size-h5;color:$color-primary-light;font-weight: 700;}
+.pagetit-h6 {font-size:$font-size-h6;color:$color-primary-light;font-weight: 700;}
+
+.subpage-tit {
+  @include ft-option (18px,700,#2b2b2b,10px 0);
+}
+
+/* 테이블 */
+.table { 
+      @include tbl-common;
+      thead th,
+      tbody td
+      tfoot td {text-align:center;vertical-align: middle;}
+}
+.table-list {border-top:2px solid #2b2b2b;
+    thead tr th,
+    tbody tr td,
+    tfoot tr td {padding: $table-cell-padding;}
+    thead tr th {
+                @include basic-th (700,$tbl-ft-color,#d8deea);
+                border: $border-default;
+;               }
+    tbody tr td {
+                @include basic-td (700,$tbl-ft-color,16px);
+                border: $border-default;
+              }
+    tr:hover {
+			 background-color: $tbl-hover-color;
+			th, td {				
+				background-color: $tbl-hover-color;
+			}
+		}
+}
+.table-body-only {
+                  @include border('top', 2px, solid, #2b2b2b);
+                  tbody th {
+                            @include body-tblbasic-th (700,$tbl-ft-color,#d8deea);
+                            border: $border-default;
+                          }
+                  tbody td {
+                          @include body-tblbasic-td (700,$tbl-ft-color,#d8deea);          
+                          border: $border-default;          
+                        }
+                }
+
+.table.table-tbody__scroll {width: 100%;display: block;}
+.table.table-tbody__scroll thead {background-color: #EFEFEF;padding-right:17px; box-sizing:border-box;}
+.table.table-tbody__scroll thead, 
+.table.table-tbody__scroll tbody {display: block;width: 100%;}
+.table.table-tbody__scroll tbody {overflow-y: scroll;height: 100px;}
+.table.table-tbody__scroll td, 
+.table.table-tbody__scroll th {height: 25px;border:1px solid #ddd;}
+
+
+/* 폼 */
+.form-wrap {display:inline-block;}
+.input-wrap {display:inline-block;
+  @include form-val (100%,$form-height,$form-height,0px);
+  background: $form-bg; 
+  border: $form-border;
+  margin:2px;
+  }
+  .input-text {
+    @include form-val (100%,100%,$form-height,10px);
+    font-size:$form-ftsize;
+    color:$form-color;
+  }
+  .select-wrap {
+    display:inline-block;
+    @include form-val (100%,$form-height,$form-height,0px);
+    background-color: $form-bg; 
+    border: $form-border;   
+    margin:2px; 
+  }
+  .input-select {
+    @include form-val (100%,100%,$form-height,10px);
+    font-size:$form-ftsize;    
+    color:$form-color;    
+    @include bgimage(arrow_select,$position:98% center,$repeat: no-repeat)
+  }
+  .form-group {margin-bottom: 0;
+    &.is-two_colum > div {width:calc( 100% / 2 - 10px)}
+    &.is-three_colum > div {width:calc( 100% / 3 - 10px)}
+  }
+  .input-post {width:calc( 100% - 120px)}
+
+/* list */
+.list-ul {
+  @include be-margin (30px);
+  > li {position:relative;
+    @include list-ul-li (6px 0,#333,18px,12px);
+    &:before {content:'';display:inline-block;
+              @include list-li-before (0,9,4px,4px,100%);
+              position:absolute;background:#1075c0;}
+              .point {color:$point-color;}      
+             > ul {
+               @include be-margin (10px);
+             }       
+             > ul > li {
+              @include list-ul-li (6px 0,#333,16px,0);
+              }
+  }
+}

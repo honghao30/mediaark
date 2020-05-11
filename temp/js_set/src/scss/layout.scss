@@ -1,0 +1,8 @@
+@charset "UTF-8";
+
+.header-wrap {position:relative;width:100%;}
+.content {clear:both;margin-top:100px;
+        &:after {content:"";display:block;clear:both;}
+        }
+.side-area {float:left;width:18%;}
+.subcont {width:80%;float:right;}

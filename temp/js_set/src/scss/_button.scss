@@ -1,0 +1,148 @@
+@charset "UTF-8";
+/* 버튼 */
+.btn {
+    display: inline-block;
+    @include btn-basic (8px 18px,$btn-default-color,$btn-default-bgcolor);
+    text-align: center;vertical-align: middle;border:1px solid $btn-border-default;
+}
+
+.mini-btn-blue {
+  @include btn-basic (3px 5px,#fff,#095084);font-size: 13px;
+  &:hover {@include hover-default (#fff,#095084);border:1px solid #095084;}
+}
+.mini-btn-orange {
+  @include btn-basic (3px 5px,#fff,#d57504);font-size: 13px;
+  &:hover {@include hover-default (#fff,#d57504);border:1px solid #d57504;}
+}
+.small-btn-blue {
+  @include btn-basic (5px 13px,#fff,#095084);
+  &:hover {@include hover-default (#fff,#095084);border:1px solid #095084;}
+}
+.small-btn-orange {
+  @include btn-basic (5px 13px,#fff,#d57504);
+  &:hover {@include hover-default (#fff,#d57504);border:1px solid #d57504;}
+}
+.btn-blue {
+  @include btn-basic (8px 18px,#fff,#095084);
+  &:hover {@include hover-default (#fff,#095084);border:1px solid #095084;}
+}
+.btn-orange {
+  @include btn-basic (8px 18px,#fff,#d57504);
+  &:hover {@include hover-default (#fff,#d57504);border:1px solid #d57504;}
+}
+
+.larger-btn-blue {
+  @include btn-basic (15px 25px,#fff,#095084);
+  &:hover {@include hover-default (#fff,#095084);border:1px solid #095084;}
+}
+.larger-btn-orange {
+  @include btn-basic (15px 25px,#fff,#d57504);
+  &:hover {@include hover-default (#fff,#d57504);border:1px solid #d57504;}
+}
+
+.btn-draw {
+    border: 0;
+    box-sizing: border-box; 
+    // Using inset box-shadow instead of border for sizing simplicity
+    box-shadow: inset 0 0 0 2px $btn-border-default;
+    color: #666;
+    font-size: inherit;
+    font-weight: 700;
+    // Required, since we're setting absolute on pseudo-elements
+    position: relative;
+    vertical-align: middle;
+    &::before,
+    &::after {
+      box-sizing: inherit;
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+}
+
+.btn-draw-default {
+    transition: color 0.25s;
+        &::before,
+        &::after {
+          // Set border to invisible, so we don't see a 4px border on a 0x0 element before the transition starts
+          border: 2px solid transparent;
+          width: 0;
+          height: 0;
+        }
+
+        // This covers the top & right borders (expands right, then down)
+        &::before {
+          top: 0;
+          left: 0;
+        }
+
+        // And this the bottom & left borders (expands left, then up)
+        &::after {
+          bottom: 0;
+          right: 0;
+        }
+        
+        &:hover {
+          color: $point-color;
+        }
+
+        // Hover styles
+        &:hover::before,
+        &:hover::after {
+          width: 100%;
+          height: 100%;
+        }
+
+        &:hover::before {
+          border-top-color: $point-color; // Make borders visible
+          border-right-color: $point-color;
+          transition:
+            width 0.25s ease-out, // Width expands first
+            height 0.25s ease-out 0.25s; // And then height
+        }
+
+        &:hover::after {
+          border-bottom-color: $point-color; // Make borders visible
+          border-left-color: $point-color;
+          transition:
+            border-color 0s ease-out 0.5s, // Wait for ::before to finish before showing border
+            width 0.25s ease-out 0.5s, // And then exanding width
+            height 0.25s ease-out 0.75s; // And finally height
+        }
+}
+
+.btn-draw-center {
+        &:hover {
+          color: $point-color;
+        }
+
+        // Set up base styles, we're going to scale instead of animating width/height
+        &::before,
+        &::after {
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+          transform-origin: center; // Ensure scaling is done from the center (expands outwards)
+        }
+
+        // scale3d(<scale-horizontal>, <scale-vertical>, <scale-depth>);
+        &::before {
+          border-top: 2px solid $point-color;
+          border-bottom: 2px solid $point-color;
+          transform: scale3d(0,1,1); // Shrink only width
+        }
+
+        &::after {
+          border-left: 2px solid $point-color;
+          border-right: 2px solid $point-color;
+          transform: scale3d(1,0,1); // Shrink only height
+        }
+
+        &:hover::before,
+        &:hover::after {
+          transform: scale3d(1,1,1); // Show full-size
+          transition: transform 0.5s;
+        }
+}

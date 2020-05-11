@@ -1,0 +1,80 @@
+@charset "UTF-8";
+
+/*-------------------------------------------------------------------
+    파일정의 : Settings
+    작성날짜 : 2020.01 홍성호
+    참고사항 : 이 파일은 설정값만 정의한다.    
+-------------------------------------------------------------------*/
+// 홍성호 & 류주현 working set var
+// 글로벌 변수 설정 
+//font & typo
+$tit-color: #000;
+$main-color: #000;
+$sub-color: #666;
+$hover_color:#ddd;
+
+//form 
+$fm-border:1px solid #ddd;
+$fm-bgcolor: #fff;
+$fm-height: 48px;
+$fm-font-color:#000;
+$fm-font-size:16px;
+$fm-border-color:#ddd;
+
+//form mobile
+$mo-fm-height:35px;
+$mo-fm-ftsize : 13px;
+
+
+//box
+$box-margin : 20px 0 40px;
+$box-padding : 14px 20px;
+$box-bgcolor : #f3f3f4;
+$box-border-color:#f3f3f4;
+
+//box-mobile
+$mo-box-margin : 20px 0;
+$mo-box-padding : 20px;
+
+
+//board-list type1
+$col1 : 5%;
+$col2 : 7%;
+$col3 : 41%;
+$col4 : 15%;
+$col5 : 5%;
+$col6 : 7%;
+$col7 : 7%;
+$col8 : 6%;
+$col10 :10%;  
+
+
+$border-mg : 25px 0 0 0;
+$bordr-color1 : #4c5e81;
+$bordr-color2 : #4c5e81;
+$bordr-colord : #ddd;
+
+$list-th_ht : 60px;
+$list-th_ftsize : 19px;
+$list-th_bgcolor : #fff;
+$list-th_color : #000;
+
+$list-td_bgcolor : #fff;
+$list-td_padding : 19px 0;
+$list-td_ftsize : 18px;
+$list-td_color : #000;
+$list-tr__hover : #f4f5fa;
+
+//paging
+$paging-on__color:#264073;
+$paging-border-default : 1px solid #e0dfdc;
+$paging-btn_bg :#fff;
+$paging-btn_border :#e0dfdc;
+
+
+//form 
+$form-height: 45px;
+$form-border:1px solid #ddd;
+$form-bg : #fff;
+$form-ftsize : 16px;
+$form-color: #666;
